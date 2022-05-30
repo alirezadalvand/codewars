@@ -53,3 +53,9 @@ function sameCase(a, b){
        /////////////////////////////////////////////////
 
 
+       function sameCase(a, b){
+        if (/[a-zA-Z]/.test(a) === false || /[a-zA-Z]/.test(b) === false) return -1;
+        if (a === a.toUpperCase() && b !== b.toUpperCase()) return 0;
+        if (a !== a.toUpperCase() && b === b.toUpperCase()) return 0;
+        return 1;
+      }
