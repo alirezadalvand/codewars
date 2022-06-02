@@ -19,3 +19,21 @@ function assembleString(arr){
       .filter(c => c != '*')[0] || '#')
       .join('');
   }
+
+
+
+  /////////////////////////// 
+
+
+
+  const assembleString = (arr) => {
+    const result = [];
+  
+    arr.map((str) => {
+      str
+        .split("")
+        .map((char, i) => (result[i] = char === "*" ? result[i] || "#" : char));
+    });
+  
+    return result.join("");
+  };
