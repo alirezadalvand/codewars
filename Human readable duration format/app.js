@@ -35,3 +35,44 @@ function formatDuration(seconds) {
      .filter(e=> !/^0/.test(e))
      .join(', ')
      .replace(/,\s(?=[\d\s\w]*$)/, ' and ');
+
+     /////////////////////////////////////////////////
+
+     function formatDuration (seconds) {
+        let sec = seconds % 60;
+        let min = Math.floor(seconds / 60);
+        let hours = Math.floor(min / 60);
+        min = min % 60;
+        let days = Math.floor(hours / 24);
+        hours = hours % 24;
+        let years = Math.floor(days / 365);
+        days = days % 365;
+          
+        let format = '';
+        
+        if (years)
+          format = years === 1 ? '1 year' : `${years} years`;
+          
+        if (days){
+          if (format) format += ', ';
+          format += days === 1 ? '1 day' : `${days} days`;
+        }
+        
+        if (hours){
+          if (format) format += ', ';
+          format += hours === 1 ? '1 hour' : `${hours} hours`;
+        }
+        
+        if (min){
+          if (format)
+            if (sec) format += ', '; else format += ' and ';
+          format += min === 1 ? '1 minute' : `${min} minutes`;
+        }
+        
+        if (sec){
+          if (format) format += ' and ';
+          format += sec === 1 ? '1 second' : `${sec} seconds`;
+        }
+      
+        return format != '' ? format : 'now';
+      }
