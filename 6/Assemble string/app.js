@@ -1,0 +1,10 @@
+function assembleString(arr){
+    let r = []
+    for(let i = 0; i<arr.length; i++){
+      for(let j = 0; j<arr[i].length; j++){
+        if(i==0) r.push(arr[i][j])
+        if(r[j] == '*' || arr[i][j] !== '*') r[j] = arr[i][j]
+      }
+    }
+    return r.map(x=>x=='*' ? '#' : x).join('')
+  }
