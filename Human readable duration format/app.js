@@ -22,3 +22,16 @@ function formatDuration(seconds) {
       ? res.join(', ').replace(/,([^,]*)$/, ' and' + '$1')
       : res[0]
   }
+
+  //////////////////////////////////////////////
+
+  const formatDuration = s => s == 0 ? 'now' :
+     [Math.floor(s/60/60/24/365),
+      Math.floor(s/60/60/24)%365,
+      Math.floor(s/60/60)%24,  
+      Math.floor(s/60)%60 ,
+      s%60]
+     .map((e,i)=> e + ' ' + ['year', 'day', 'hour', 'minute', 'second'][i] + (+e>1?'s': ''))
+     .filter(e=> !/^0/.test(e))
+     .join(', ')
+     .replace(/,\s(?=[\d\s\w]*$)/, ' and ');
