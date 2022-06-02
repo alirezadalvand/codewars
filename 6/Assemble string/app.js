@@ -37,3 +37,7 @@ function assembleString(arr){
   
     return result.join("");
   };
+
+  //////////////////////////////////////////
+
+  const assembleString=a=>a.length ? [...a[0]].map((e,i)=>a.map(x=>x[i]).filter(e=>e!=='*')).map(e=>e.length ? e[0] : '#').join`` : ''
