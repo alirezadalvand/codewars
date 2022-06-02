@@ -8,3 +8,14 @@ function assembleString(arr){
     }
     return r.map(x=>x=='*' ? '#' : x).join('')
   }
+
+
+
+  ////////////////////////////////////////////
+
+  const assembleString = a => {
+    return [...Array((a[0] || []).length).keys()]
+      .map(i => a.map(s => s[i])
+      .filter(c => c != '*')[0] || '#')
+      .join('');
+  }
