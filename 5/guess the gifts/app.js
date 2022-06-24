@@ -23,3 +23,11 @@ function guessGifts(wishlist, presents) {
     });
     return r;
   }
+  ////////////////////////////////////
+
+
+  function guessGifts(wishlist, presents) {
+    return wishlist.filter(function(v) {
+      return presents.some(function(p) {return p.size == v.size && p.clatters == v.clatters && p.weight == v.weight;});
+    }).map(function(v) {return v.name;});
+  }
