@@ -28,3 +28,17 @@ const invertedRanges = ranges =>
 
 
 ////////////////////////////////////////////////////////////////////
+function invertedRanges(ranges) {
+  if (ranges.length === 0) return [[0, 100]];
+  let start = 0, result = [];
+  for (let i = 0; i < ranges.length; i++) {
+    if (ranges[i][0] === start) {
+      start = ranges[i][1]+1;
+    } else {
+      result.push([start, ranges[i][0]-1]);
+      start = ranges[i][1]+1
+    }
+  }
+  if (start < 100) result.push([start, 100]);
+  return result;
+}
