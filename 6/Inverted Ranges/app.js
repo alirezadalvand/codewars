@@ -47,3 +47,18 @@ function invertedRanges(ranges) {
 
 
 invertedRanges=r=>[...r,[101]].reduce(([a,s],[b,c])=>[b>s?[...a,[s,b-1]]:a,c+1],[[],0])[0]
+
+
+////////////////////////////////////////////////
+
+function invertedRanges(ranges) {
+  let start = 0;
+  let end = 100;
+  let arr=[];
+ for(let i of ranges){
+   if(start!=i[0]) arr.push([start,i[0]-1]);
+   start = i[1]+1;
+ }
+  if(start!=end+1) arr.push([start,end]);
+  return arr;
+}
