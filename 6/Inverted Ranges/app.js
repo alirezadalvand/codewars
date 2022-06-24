@@ -20,3 +20,11 @@ function invertedRanges(ranges) {
 }
 
 
+/////////////////////////////////////////
+
+const invertedRanges = ranges =>
+  [...ranges, [101, 101]].reduce( ({idx, res}, [start, end]) =>
+     ( {res: start-- !== idx ? [...res, [idx, start]] : res, idx: ++end} ), {idx: 0, res: []} ).res;
+
+
+////////////////////////////////////////////////////////////////////
