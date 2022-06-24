@@ -31,3 +31,25 @@ function guessGifts(wishlist, presents) {
       return presents.some(function(p) {return p.size == v.size && p.clatters == v.clatters && p.weight == v.weight;});
     }).map(function(v) {return v.name;});
   }
+
+
+  ////////////////////////////////////
+  function guessGifts(wishlist, presents) {
+    var result = [],
+    wishlistL = wishlist.length,
+    presentsL = presents.length,
+    i,
+    j;
+    for(i=0; i<presentsL; i++){
+      for(j=0; j<wishlistL; j++){
+        if( hasSameFeatures(wishlist[j], presents[i]) && result.indexOf(wishlist[j].name)<0 )
+          result.push(wishlist[j].name);
+      }
+    }
+    return result;
+}
+function hasSameFeatures(wished, present){
+    if(wished.size==present.size && wished.clatters==present.clatters && wished.weight==present.weight) 
+      return true;
+    return false;
+}
