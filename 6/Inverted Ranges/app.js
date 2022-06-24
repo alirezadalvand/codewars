@@ -42,3 +42,8 @@ function invertedRanges(ranges) {
   if (start < 100) result.push([start, 100]);
   return result;
 }
+
+//////////////////////////////////////////////////////
+
+
+invertedRanges=r=>[...r,[101]].reduce(([a,s],[b,c])=>[b>s?[...a,[s,b-1]]:a,c+1],[[],0])[0]
