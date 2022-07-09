@@ -34,3 +34,26 @@ function dirReduc(arr){
   }
   return arr;
 }
+
+
+
+/////////////////////////////////////////////////////////////
+
+function dirReduc(arr){
+    var oppositeDirections = {
+      NORTH: 'SOUTH',
+      SOUTH: 'NORTH',
+      WEST: 'EAST',
+      EAST: 'WEST'
+    };
+    var directions = arr.slice(0);
+    for (var i = 0; i < directions.length - 1;) {
+      if (oppositeDirections[directions[i]] === directions[i+1]) {
+        directions.splice(i, 2);
+        i = (i === 0) ? 0 : i - 1;
+      } else {
+        i += 1;
+      }
+    }
+    return directions;
+  }
