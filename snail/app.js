@@ -27,3 +27,29 @@ snail = function(array) {
   }
   return result;
 }
+
+
+/////////////////////////////////////////////////////
+
+snail = function(array) {
+  var maxx = array[0].length,
+    maxy = maxx,
+    minx = -1, miny = 0,
+    x = 0, y = 0,
+    result = [], dir = "r";
+  
+  for(var i = maxx*maxx;i>0;i--){
+    result.push(array[y][x]);
+    switch (dir){
+      case "u": y--; break;
+      case "l": x--; break;
+      case "d": y++; break;
+      case "r": x++; break;
+    }
+    if(x==maxx-1 && y==miny){ dir="d"; minx++; }
+    else if(x==maxx-1 && y==maxy-1){ dir="l"; miny++;  }
+    else if(x==minx && y==maxy-1){ dir="u"; maxx--; }
+    else if(x==minx && y==miny){ dir="r"; maxy--; }
+  }  
+  return result;
+}
