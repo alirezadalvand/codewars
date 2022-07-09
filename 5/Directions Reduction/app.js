@@ -14,3 +14,23 @@ function dirReduc(arr){
   }
 
 
+// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+function isOppo(dir1,dir2) {
+    if (dir1 + dir2 === 'SOUTHNORTH') return true;
+    if (dir1 + dir2 === 'NORTHSOUTH') return true;
+    if (dir1 + dir2 === 'EASTWEST') return true;
+    if (dir1 + dir2 === 'WESTEAST') return true;
+    return false;
+}
+  
+function dirReduc(arr){
+  var len = arr.length
+  for (var i = 0; i < len - 1; i++) {
+    if (isOppo(arr[i], arr[i+1])) {
+      arr.splice(i,2);
+      return dirReduc(arr);
+    }
+  }
+  return arr;
+}
